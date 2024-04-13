@@ -3,7 +3,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import SidebarToggle from '@/Components/Ui/toggles/SidebarToggle';
 import ThemeToggle from '@/Components/Ui/toggles/ThemeToggle';
 import ProfileDropdown from '@/Components/Ui/ProfileDropdown';
-import { Grid, LogOut, User } from 'react-feather';
+import { Bookmark, Grid, LogOut, User } from 'react-feather';
 import SidebarLink from '@/Components/Ui/SidebarLink';
 
 export default function Authenticated({ user, header, children }) {
@@ -35,7 +35,7 @@ export default function Authenticated({ user, header, children }) {
         {/* navbar end */}
 
         {/* main content */}
-        <main className="p-4 w-full">
+        <main className="p-4 w-full space-y-3">
           {children}
         </main>
         {/* main content end */}
@@ -57,6 +57,10 @@ export default function Authenticated({ user, header, children }) {
           <SidebarLink href={route('dashboard')} active={route().current('dashboard')}>
             <Grid />
             <span>Dashboard</span>
+          </SidebarLink>
+          <SidebarLink href={route('posts.index')} active={route().current('posts.index')}>
+            <Bookmark />
+            <span>Posts</span>
           </SidebarLink>
           {/* links end */}
         </div>
