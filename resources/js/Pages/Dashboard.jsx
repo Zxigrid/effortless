@@ -1,4 +1,4 @@
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import AuthenticatedLayout from '@/Layouts/Admin/AuthenticatedLayout';
 import { Head } from '@inertiajs/react';
 import DashboardCard from '@/Components/Ui/DashboardCard';
 import { Bookmark } from 'react-feather';
@@ -22,7 +22,6 @@ export default function Dashboard({ auth }) {
       <section className="flex justify-start">
         <DashboardCard href="#" Icon={Bookmark} title='Total Post' total={0} />
       </section>
-
     </AuthenticatedLayout>
   );
 }
