@@ -7,6 +7,15 @@
     @apply font-sans;
   }
 
+  /* layouts */
+  .data-section {
+    @apply w-full overflow-x-auto bg-neutral rounded-md p-3 shadow;
+  }
+  .tool-section {
+    @apply flex max-[460px]:flex-col-reverse items-end md:flex-row lg:items-center gap-3 lg:gap-0 justify-between;
+  }
+  /* layouts END */
+
   /* sidebar default */
   .sidebar {
     @apply flex flex-col p-0 w-72 min-h-full bg-neutral font-medium;

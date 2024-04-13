@@ -1,8 +1,6 @@
 import BreadCrumbs from '@/Components/Ui/BreadCrumbs'
 import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
-import DataSection from '@/Layouts/Admin/DataSection'
-import ToolSection from '@/Layouts/Admin/ToolSection'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 import React from 'react'
@@ -18,16 +16,16 @@ export default function Index({auth}) {
         <BreadCrumbs.Disable value={"Posts"} />
       </BreadCrumbs>
 
-      <ToolSection>
+      <section className="tool-section">
         <SearchBar/>
 
-        <Link href="#" className="btn btn-primary text-sm gap-1">
+        <Link as="Button" href={route('posts.create')} className="btn btn-primary text-sm gap-1">
           <Plus />
           <span>Tambah Blog</span>
         </Link>
-      </ToolSection>
+      </section>
 
-      <DataSection>
+      <section className="data-section">
         <Table>
           <Table.Head>
             <th className="px-3">Thumbnail</th>
@@ -37,7 +35,7 @@ export default function Index({auth}) {
             <th></th>
           </Table.Head>
         </Table>
-      </DataSection>
+      </section>
     </Authenticated>
   )
 }
