@@ -13,6 +13,14 @@ export default {
 
   theme: {
     extend: {
+      colors: {
+        'grey-steel': '#979797',
+        'graphite': 'oklch(var(--graphite) / <alpha-value>)'
+      },
+      boxShadow: {
+        'default': '0 0 15px',
+        'default-small': '0 0 10.3px -2px'
+      },
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
