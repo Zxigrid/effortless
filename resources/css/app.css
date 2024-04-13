@@ -1,3 +1,143 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  * {
+    @apply font-sans;
+  }
+
+  /* sidebar default */
+  .sidebar {
+    @apply flex flex-col p-0 w-72 min-h-full bg-neutral font-medium;
+  }
+  .sidebar-item > svg {
+    @apply w-5 h-5;
+  }
+  /* sidebar default EnD */
+
+  /* table */
+  .dash-table {
+    @apply w-full min-w-[500px];
+  }
+  .dash-table > thead > tr {
+    @apply h-10;
+  }
+  .dash-table > thead > tr > th {
+    @apply text-primary font-medium text-sm text-start bg-primary/10 first:rounded-s last:rounded-e;
+  }
+  .dash-table > tbody > tr {
+    @apply h-12 hover:bg-base-100/60 font-medium;
+  }
+  .dash-table > tbody > tr > td, .dash-table > tbody > tr > th {
+    @apply text-sm text-graphite;
+  }
+  .dash-table > tbody > tr > td:not(:has(span)):not(:has(a)), .dash-table > tbody > tr > th {
+    @apply opacity-60;
+  }
+  .dash-table > tbody > tr:hover > td:not(:has(span)):not(:has(a)), .dash-table > tbody > tr:hover > th {
+    @apply opacity-90;
+  }
+  /* table END */
+
+  /* modal */
+  .modal-box {
+    @apply rounded-md !important;
+  }
+  .modal-icon-error {
+    @apply w-10 h-10 grid place-items-center rounded-full bg-error/10 text-error;
+  }
+  .modal-icon-success {
+    @apply w-10 h-10 grid place-items-center rounded-full bg-success/10 text-success;
+  }
+  .modal-icon-warning {
+    @apply w-10 h-10 grid place-items-center rounded-full bg-warning/10 text-warning;
+  }
+  .modal-icon-info {
+    @apply w-10 h-10 grid place-items-center rounded-full bg-info/10 text-info;
+  }
+  .btn-modal-cancel {
+    @apply btn bg-base-200 text-graphite border-transparent rounded-md;
+  }
+  .btn-modal-approve.error {
+    @apply btn btn-error bg-error/30 text-error border-transparent hover:text-white rounded-md;
+  }
+  .btn-modal-approve.success {
+    @apply btn btn-success bg-success/30 text-success border-transparent hover:text-white rounded-md;
+  }
+  .btn-modal-approve.warning {
+    @apply btn btn-warning bg-warning/30 text-warning border-transparent hover:text-white rounded-md;
+  }
+  .btn-modal-approve.info {
+    @apply btn btn-info bg-info/30 text-info border-transparent hover:text-white rounded-md;
+  }
+  /* modal END */
+}
+
+@layer components {
+  /* sidebar */
+  .sidebar-item {
+    @apply flex text-sm gap-1 p-4 hover:bg-primary/10 text-grey-steel hover:text-primary duration-200;
+  }
+  .sidebar-item.active {
+    @apply flex gap-1 p-4 bg-primary/10 text-primary relative after:w-[3px] after:h-full after:bg-primary after:absolute after:right-0 after:bottom-0;
+  }
+  /* sidebar end */
+
+  /* dashboard */
+  .dashboard-card {
+    @apply flex items-center w-72 bg-neutral hover:bg-primary p-3 rounded-lg duration-200 hover:text-white hover:shadow-default hover:shadow-primary;
+  }
+  .dashboard-card > div > .card-icon {
+    @apply bg-primary/10 grid place-items-center w-12 h-12 rounded-md mb-4;
+  }
+  /* dashboard end */
+
+  /* navbar */
+  .dropdown-item {
+    @apply rounded-md p-2 font-medium hover:bg-primary/10 text-grey-steel hover:text-primary;
+  }
+  /* navbar END */
+
+  /* buttons */
+  .btn {
+    @apply h-9 min-h-9 rounded-md;
+  }
+  .btn-primary {
+    @apply text-white;
+  }
+  .btn-delete-sm {
+    @apply btn btn-sm bg-error/30 hover:bg-error rounded-md border-0 text-error hover:text-white;
+  }
+  .btn-edit-sm {
+    @apply btn btn-sm bg-warning/30 hover:bg-warning rounded-md border-0 text-warning hover:text-white;
+  }
+  .btn-info-sm {
+    @apply btn btn-sm bg-info/30 hover:bg-info rounded-md border-0 text-info hover:text-white;
+  }
+
+  .btn-delete-sm:disabled {
+    @apply bg-error/30 text-error opacity-15;
+  }
+  /* buttons END */
+
+  /* badge */
+  .dash-badge {
+    @apply text-xs p-1 px-3 rounded-full;
+  }
+  /* badge END */
+
+  /* input */
+  .label {
+    @apply m-0 pb-[0.1rem];
+  }
+
+  .input, .select, .file-input {
+    @apply h-10 min-h-10 rounded-md focus:border-transparent focus:outline-offset-0 focus:outline-primary focus-within:border-transparent focus-within:outline-offset-0 focus-within:outline-primary  !important;
+  }
+
+  .input:disabled {
+    @apply bg-base-200;
+  }
+  /* input END */
+}

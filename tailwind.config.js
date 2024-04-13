@@ -14,9 +14,40 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
       },
     },
+  },
+
+  daisyui: {
+    themes: [
+      {
+        dashLight: {
+          primary: "#3661EB",
+          secondary: "#D24FCE",
+          accent: "#FF589D",
+          neutral: "#FFFFFF",
+          "base-100": "#F4F4FF",
+          info: "#0CD0C4",
+          success: "#1CE50B",
+          warning: "#E5B60B",
+          error: "#E41212",
+          '--graphite': "#303030",
+        },
+        dashDark: {
+          primary: "#325ADB",
+          secondary: "#D24FCE",
+          accent: "#FF589D",
+          neutral: "#222127",
+          "base-100": "#2E2C39",
+          info: "#0CD0C4",
+          success: "#1CE50B",
+          warning: "#E5B60B",
+          error: "#E41212",
+          '--graphite': "#D6D6D6",
+        },
+      },
+    ],
   },
 
   plugins: [forms, daisyui],
