@@ -4,7 +4,7 @@ import { Moon, Sun } from 'react-feather'
 export default function ThemeToggle() {
   return (
     <label className="swap swap-rotate text-grey-steel">
-      <input type="checkbox" className="theme-controller" defaultValue="dashDark" />
+      <input type="checkbox" className="theme-controller hidden" defaultValue="dashDark" />
       {/* sun icon */}
       <Sun className="swap-on w-6 h-6" />
       {/* moon icon */}
