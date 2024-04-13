@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import ApplicationLogo from '@/Components/ApplicationLogo';
-import SidebarToggle from '@/Components/ui/toggles/SidebarToggle';
-import ThemeToggle from '@/Components/ui/toggles/ThemeToggle';
-import ProfileDropdown from '@/Components/ui/ProfileDropdown';
-import { LogOut, User } from 'react-feather';
-import SidebarLink from '@/Components/ui/SidebarLink';
+import SidebarToggle from '@/Components/Ui/toggles/SidebarToggle';
+import ThemeToggle from '@/Components/Ui/toggles/ThemeToggle';
+import ProfileDropdown from '@/Components/Ui/ProfileDropdown';
+import { Grid, LogOut, User } from 'react-feather';
+import SidebarLink from '@/Components/Ui/SidebarLink';
 
 export default function Authenticated({ user, header, children }) {
   return (
@@ -15,6 +15,7 @@ export default function Authenticated({ user, header, children }) {
         <div className="navbar bg-neutral">
           <div className="flex-1 flex gap-1 items-center">
             <SidebarToggle />
+            <h1 className="ml-1 font-semibold text-xl text-gray-800 leading-tight">{header}</h1>
           </div>
           <div className="flex gap-2 items-center flex-none">
             <ThemeToggle />
@@ -54,7 +55,7 @@ export default function Authenticated({ user, header, children }) {
 
           {/* links */}
           <SidebarLink href={route('dashboard')} active={route().current('dashboard')}>
-            <i data-feather="grid" />
+            <Grid />
             <span>Dashboard</span>
           </SidebarLink>
           {/* links end */}
