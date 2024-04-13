@@ -97,6 +97,9 @@
   .dropdown-item {
     @apply rounded-md p-2 font-medium hover:bg-primary/10 text-grey-steel hover:text-primary;
   }
+  .dropdown-item.error {
+    @apply hover:bg-error/10 text-grey-steel hover:text-error;
+  }
   /* navbar END */
 
   /* buttons */
