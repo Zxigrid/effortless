@@ -134,11 +134,9 @@
   .label {
     @apply m-0 pb-[0.1rem];
   }
-
   .input, .select, .file-input {
-    @apply h-10 min-h-10 rounded-md focus:border-transparent focus:outline-offset-0 focus:outline-primary focus-within:border-transparent focus-within:outline-offset-0 focus-within:outline-primary  !important;
+    @apply h-10 min-h-10 rounded-md focus:border-transparent focus:outline-offset-0 focus:outline-primary focus-within:border-transparent focus-within:outline-offset-0 focus-within:outline-primary;
   }
-
   .input:disabled {
     @apply bg-base-200;
   }
