@@ -7,15 +7,6 @@
     @apply font-sans;
   }
 
-  /* layouts */
-  .data-section {
-    @apply w-full overflow-x-auto bg-neutral rounded-md p-3 shadow;
-  }
-  .tool-section {
-    @apply flex max-[460px]:flex-col-reverse items-end md:flex-row lg:items-center gap-3 lg:gap-0 justify-between;
-  }
-  /* layouts END */
-
   /* sidebar default */
   .sidebar {
     @apply flex flex-col p-0 w-72 min-h-full bg-neutral font-medium;
@@ -144,10 +135,28 @@
     @apply m-0 pb-[0.1rem];
   }
   .input, .select, .file-input {
-    @apply h-9 min-h-9 rounded-md focus:border-transparent focus:outline-offset-0 focus:outline-primary focus-within:border-transparent focus-within:outline-offset-0 focus-within:outline-primary;
+    @apply h-10 min-h-10 rounded-md focus:border-transparent focus:outline-offset-0 focus:outline-primary focus-within:border-transparent focus-within:outline-offset-0 focus-within:outline-primary;
   }
   .input:disabled {
     @apply bg-base-200;
   }
   /* input END */
+
+  /* layouts */
+  .data-section {
+    @apply w-full overflow-x-auto bg-neutral rounded-md p-3 shadow;
+  }
+  .tool-section {
+    @apply flex max-[460px]:flex-col-reverse items-end md:flex-row lg:items-center gap-3 lg:gap-0 justify-between;
+  }
+  .form-section {
+    @apply w-full flex flex-col md:flex-row gap-3 justify-center items-start;
+  }
+  .form-layout {
+    @apply w-full lg:flex-1 bg-neutral rounded-md shadow flex flex-col gap-3 p-3;
+  }
+  .thumbnail-prev-layout {
+    @apply w-full lg:flex-1 p-3 bg-neutral rounded-md shadow;
+  }
+  /* layouts END */
 }
