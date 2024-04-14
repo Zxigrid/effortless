@@ -32,10 +32,10 @@
   .dash-table > tbody > tr > td, .dash-table > tbody > tr > th {
     @apply text-sm text-graphite;
   }
-  .dash-table > tbody > tr > td:not(:has(span)):not(:has(a)), .dash-table > tbody > tr > th {
+  .dash-table > tbody > tr > td:not(:has(span)):not(:has(a)):not(:has(img)), .dash-table > tbody > tr > th {
     @apply opacity-60;
   }
-  .dash-table > tbody > tr:hover > td:not(:has(span)):not(:has(a)), .dash-table > tbody > tr:hover > th {
+  .dash-table > tbody > tr:hover > td:not(:has(span)):not(:has(a)):not(:has(img)), .dash-table > tbody > tr:hover > th {
     @apply opacity-90;
   }
   /* table END */
