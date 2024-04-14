@@ -1,18 +1,22 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
-import { Head, useForm } from '@inertiajs/react'
+import { Head, Link, useForm } from '@inertiajs/react'
 import BreadCrumbs from '@/Components/Ui/BreadCrumbs'
 import TextInput from '@/Components/Ui/Form/TextInput'
 import FileInput from '@/Components/Ui/Form/FileInput'
 import PrimaryButton from '@/Components/Ui/PrimaryButton'
+import { Trash2, Edit, AlertTriangle } from 'react-feather'
+import Modal from '@/Components/Ui/Modal'
 
 export default function Create({ auth }) {
-  const { data, setData, post, processing, progress, errors } = useForm({
+  const { data, setData, post, processing, errors } = useForm({
     title: '',
     slug: '',
     thumbnail: '',
     body: ''
   })
+  const [imagePreview, setImagePreview] = useState(null);
+  const inputFileRef = useRef(null);
 
   const generateSlug = (title) => {
     return title.toLowerCase().replace(/[^a-zA-Z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -32,6 +36,23 @@ export default function Create({ auth }) {
   const submit = (e) => {
     e.preventDefault();
     post(route('posts.store'));
+  }
+
+  const file = data.thumbnail;
+  if (file) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setImagePreview(reader.result);
+    }
+    reader.readAsDataURL(file);
+  }
+
+  const handleRemoveImage = () => {
+    setData('thumbnail', '');
+    setImagePreview(null);
+    if (inputFileRef.current) {
+      inputFileRef.current.value = null;
+    }
   }
   return (
     <Authenticated user={auth.user} header="Tambah Postingan">
@@ -65,6 +86,8 @@ export default function Create({ auth }) {
             accept="image/*"
             onChange={e => setData('thumbnail', e.target.files[0])}
             error={errors.thumbnail}
+            inputRef={inputFileRef}
+            id={'thumbnail'}
           />
           <TextInput
             label="Body"
@@ -74,16 +97,59 @@ export default function Create({ auth }) {
             error={errors.body}
           />
           <div className="flex justify-end gap-3">
-            <button className="btn btn-outline btn-error">
+            <button
+              type="button"
+              onClick={() => document.getElementById('modal_cancel').showModal()}
+              className="btn btn-outline btn-error"
+              disabled={processing}
+            >
               Batalkan
             </button>
-            <PrimaryButton type="submit">
+            <PrimaryButton type="submit" disabled={processing}>
               Simpan
             </PrimaryButton>
           </div>
         </form>
-        <div className="thumbnail-prev-layout"></div>
+        <div className="thumbnail-prev-layout">
+          <div className="w-full">
+            <div className="label flex justify-between items-end mb-2 pt-0">
+              <span className="label-text text-graphite">Thumbnail Preview</span>
+              <div className="flex gap-2">
+                <label htmlFor="thumbnail" type="button" className="btn-edit-sm" disabled={!data.thumbnail ? true : false}>
+                  <Edit className="w-4 h-4" />
+                </label>
+                <button
+                  type="button"
+                  onClick={handleRemoveImage}
+                  className="btn-delete-sm"
+                  disabled={!data.thumbnail ? true : false}
+                >
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            <img src={imagePreview ?? `/static/images/no-preview-img.jpg`} alt="No preview" className="w-full h-64 object-cover rounded-md" />
+          </div>
+        </div>
       </section>
+
+      <Modal
+        id={"modal_cancel"}
+        title={"Batalkan Postingan"}
+        description={"Yakin ingin membatalkan postingan? semua inputan kamu tidak akan tersimpan"}
+        Icon={AlertTriangle}
+        approve={
+          <button className="btn-modal-cancel">
+            Batal
+          </button>
+        }
+        cancel={
+          <Link as='Button' type='button' href={route('posts.index')} className="btn-modal-approve error">
+            Yakin
+          </Link>
+        }
+      />
     </Authenticated>
   )
 }
