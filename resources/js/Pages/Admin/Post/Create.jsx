@@ -33,6 +33,7 @@ export default function Create({ auth }) {
     e.preventDefault();
     post(route('posts.store'));
   }
+  console.log(errors)
   return (
     <Authenticated user={auth.user} header="Tambah Postingan">
       <Head title="Tambah Postingan" />
@@ -50,24 +51,28 @@ export default function Create({ auth }) {
             name={'title'}
             onChange={onHandleChange}
             value={data.title}
+            error={errors.title}
           />
           <TextInput
             label="Slug"
             name={'slug'}
             value={data.slug}
             disabled={true}
+            error={errors.slug}
           />
           <FileInput
             label="Thumbnail"
             name={'thumbnail'}
             accept="image/*"
             onChange={e => setData('thumbnail', e.target.files[0])}
+            error={errors.thumbnail}
           />
           <TextInput
             label="Body"
             name={'body'}
             onChange={onHandleChange}
             value={data.body}
+            error={errors.body}
           />
           <div className="flex justify-end gap-3">
             <button className="btn btn-outline btn-error">
