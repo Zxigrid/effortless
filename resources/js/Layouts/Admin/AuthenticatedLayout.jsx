@@ -15,7 +15,7 @@ export default function Authenticated({ user, header, children }) {
         <div className="navbar bg-neutral">
           <div className="flex-1 flex gap-1 items-center">
             <SidebarToggle />
-            <h1 className="ml-1 font-semibold text-xl text-gray-800 leading-tight">{header}</h1>
+            <h1 className="ml-1 font-semibold text-xl text-graphite leading-tight">{header}</h1>
           </div>
           <div className="flex gap-2 items-center flex-none">
             <ThemeToggle />
