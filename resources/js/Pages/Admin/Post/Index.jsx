@@ -7,7 +7,6 @@ import { Head, Link } from '@inertiajs/react'
 import { Plus } from 'react-feather'
 
 export default function Index({ auth, posts }) {
-  console.log(posts)
   return (
     <Authenticated user={auth.user} header="Postingan Blog">
       <Head title="Posts" />
