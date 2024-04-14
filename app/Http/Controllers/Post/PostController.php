@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\Post\PostStoreRequest;
+use App\Services\Admin\Post\PostService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class PostController extends Controller
 {
+    public function __construct(protected PostService $service){}
     /**
      * Display a listing of the resource.
      */
@@ -21,15 +24,17 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render("Admin/Post/Create");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostStoreRequest $request)
     {
-        //
+        $this->service->store($request->data());
+
+        return to_route('posts.index')->with('success', 'Blog baru berhasil di posting!');
     }
 
     /**
