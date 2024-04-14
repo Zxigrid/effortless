@@ -33,7 +33,6 @@ export default function Create({ auth }) {
     e.preventDefault();
     post(route('posts.store'));
   }
-  console.log(errors)
   return (
     <Authenticated user={auth.user} header="Tambah Postingan">
       <Head title="Tambah Postingan" />
