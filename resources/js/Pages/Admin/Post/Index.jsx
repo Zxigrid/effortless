@@ -6,7 +6,7 @@ import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 import { Plus } from 'react-feather'
 
-export default function Index({auth, posts}) {
+export default function Index({ auth, posts }) {
   console.log(posts)
   return (
     <Authenticated user={auth.user} header="Postingan Blog">
@@ -18,7 +18,7 @@ export default function Index({auth, posts}) {
       </BreadCrumbs>
 
       <section className="tool-section">
-        <SearchBar/>
+        <SearchBar />
 
         <Link as="Button" href={route('posts.create')} className="btn btn-primary text-sm gap-1">
           <Plus />
@@ -39,12 +39,12 @@ export default function Index({auth, posts}) {
             {posts.data.map((post, index) => (
               <tr key={index}>
                 <td>
-                  <img src={"storage/"+post.thumbnail} alt={post.title} className="w-10 h-10 rounded-full object-cover"/>
+                  <img src={"storage/" + post.thumbnail} alt={post.title} className="w-10 h-10 rounded-full object-cover" />
                 </td>
                 <td>{post.title}</td>
                 <td>{post.slug}</td>
                 <td>
-                  <span class={`dash-badge ${post.status == 'published' ? ' bg-success/20 text-success' : ' bg-error/20 text-error'}`}>
+                  <span className={`dash-badge ${post.status == 'published' ? ' bg-success/20 text-success' : ' bg-error/20 text-error'}`}>
                     {post.status}
                   </span>
                 </td>
@@ -55,6 +55,21 @@ export default function Index({auth, posts}) {
             ))}
           </Table.Body>
         </Table>
+      </section>
+
+      <section className="w-full flex justify-end items-center">
+        <div className="join shadow bg-neutral">
+          {
+            posts.links && posts.links.map((link, _) => (
+              <Link
+              as='Button'
+              href={link.url}
+              className="join-item btn btn-neutral"
+              disabled={link.active}
+              dangerouslySetInnerHTML={{__html: link.label}} />
+            ))
+          }
+        </div>
       </section>
     </Authenticated>
   )
