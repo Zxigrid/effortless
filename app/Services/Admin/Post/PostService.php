@@ -9,8 +9,16 @@ use App\Models\Post;
  */
 class PostService
 {
+
+  public function dataIndex() {
+    return [
+      'posts'=>Post::paginate(10),
+    ];
+  }
+
   public function store($data) {
-    \App\Helpers\ImageHelper::save($data['thumbnail']);
+    $fileName = \App\Helpers\ImageHelper::save($data['thumbnail']);
+    $data['thumbnail'] = $fileName;
     Post::create($data);
   }
 }

@@ -6,7 +6,8 @@ import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 import { Plus } from 'react-feather'
 
-export default function Index({auth}) {
+export default function Index({auth, posts}) {
+  console.log(posts)
   return (
     <Authenticated user={auth.user} header="Postingan Blog">
       <Head title="Posts" />
@@ -34,6 +35,21 @@ export default function Index({auth}) {
             <th>Status</th>
             <th></th>
           </Table.Head>
+          <Table.Body>
+            {posts.data.map((post, index) => (
+              <tr key={index}>
+                <td>
+                  <img src={"storage/"+post.thumbnail} alt={post.title} className="w-10 h-10 rounded-full object-cover"/>
+                </td>
+                <td>{post.title}</td>
+                <td>{post.slug}</td>
+                <td>{post.status}</td>
+                <td>
+
+                </td>
+              </tr>
+            ))}
+          </Table.Body>
         </Table>
       </section>
     </Authenticated>
