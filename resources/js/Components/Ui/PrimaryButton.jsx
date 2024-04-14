@@ -5,7 +5,13 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
       className={`btn btn-primary ${className}`}
       disabled={disabled}
     >
-      {children}
+      {
+        disabled ? (
+          <span class="loading loading-spinner loading-sm"></span>
+        ) : (
+          children
+        )
+      }
     </button>
   );
 }
