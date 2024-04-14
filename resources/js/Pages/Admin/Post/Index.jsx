@@ -1,14 +1,14 @@
+import React from 'react'
 import BreadCrumbs from '@/Components/Ui/BreadCrumbs'
 import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
-import React from 'react'
 import { Plus } from 'react-feather'
 
 export default function Index({auth}) {
   return (
-    <Authenticated user={auth.user}>
+    <Authenticated user={auth.user} header="Postingan Blog">
       <Head title="Posts" />
 
       <BreadCrumbs>
