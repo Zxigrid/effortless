@@ -43,7 +43,11 @@ export default function Index({auth, posts}) {
                 </td>
                 <td>{post.title}</td>
                 <td>{post.slug}</td>
-                <td>{post.status}</td>
+                <td>
+                  <span class={`dash-badge ${post.status == 'published' ? ' bg-success/20 text-success' : ' bg-error/20 text-error'}`}>
+                    {post.status}
+                  </span>
+                </td>
                 <td>
 
                 </td>
