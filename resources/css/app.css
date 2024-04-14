@@ -107,7 +107,10 @@
     @apply h-9 min-h-9 rounded-md;
   }
   .btn-primary {
-    @apply text-white;
+    @apply text-white disabled:bg-primary/50 disabled:text-white/50;
+  }
+  .btn-error.btn-outline {
+    @apply disabled:border-error/50 disabled:text-error/50;
   }
   .btn-delete-sm {
     @apply btn btn-sm bg-error/30 hover:bg-error rounded-md border-0 text-error hover:text-white;
