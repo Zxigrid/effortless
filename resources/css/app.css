@@ -39,39 +39,6 @@
     @apply opacity-90;
   }
   /* table END */
-
-  /* modal */
-  .modal-box {
-    @apply rounded-md !important;
-  }
-  .modal-icon-error {
-    @apply w-10 h-10 grid place-items-center rounded-full bg-error/10 text-error;
-  }
-  .modal-icon-success {
-    @apply w-10 h-10 grid place-items-center rounded-full bg-success/10 text-success;
-  }
-  .modal-icon-warning {
-    @apply w-10 h-10 grid place-items-center rounded-full bg-warning/10 text-warning;
-  }
-  .modal-icon-info {
-    @apply w-10 h-10 grid place-items-center rounded-full bg-info/10 text-info;
-  }
-  .btn-modal-cancel {
-    @apply btn bg-base-200 text-graphite border-transparent rounded-md;
-  }
-  .btn-modal-approve.error {
-    @apply btn btn-error bg-error/30 text-error border-transparent hover:text-white rounded-md;
-  }
-  .btn-modal-approve.success {
-    @apply btn btn-success bg-success/30 text-success border-transparent hover:text-white rounded-md;
-  }
-  .btn-modal-approve.warning {
-    @apply btn btn-warning bg-warning/30 text-warning border-transparent hover:text-white rounded-md;
-  }
-  .btn-modal-approve.info {
-    @apply btn btn-info bg-info/30 text-info border-transparent hover:text-white rounded-md;
-  }
-  /* modal END */
 }
 
 @layer components {
@@ -112,18 +79,8 @@
   .btn-error.btn-outline {
     @apply disabled:border-error/50 disabled:text-error/50;
   }
-  .btn-error-sm {
-    @apply btn btn-sm bg-error/30 hover:bg-error rounded-md border-0 text-error hover:text-white;
-  }
-  .btn-warning-sm {
-    @apply btn btn-sm bg-warning/30 hover:bg-warning rounded-md border-0 text-warning hover:text-white;
-  }
-  .btn-info-sm {
-    @apply btn btn-sm bg-info/30 hover:bg-info rounded-md border-0 text-info hover:text-white;
-  }
-
-  .btn-delete-sm:disabled {
-    @apply bg-error/30 text-error opacity-15;
+  .btn-action-sm {
+    @apply btn btn-sm rounded-md border-0 disabled:opacity-30;
   }
   /* buttons END */
 
@@ -162,4 +119,51 @@
     @apply w-full lg:flex-1 p-3 bg-neutral rounded-md shadow;
   }
   /* layouts END */
+
+  /* modal */
+  .modal-box {
+    @apply rounded-md !important;
+  }
+  .modal-icon {
+    @apply w-10 h-10 grid place-items-center rounded-full text-white;
+  }
+  /* modal END */
+}
+
+@layer utilities {
+  /* buttons */
+  .btn-action-sm.error {
+    @apply bg-error/30 hover:bg-error text-error hover:text-white;
+  }
+  .btn-action-sm.warning {
+    @apply bg-warning/30 hover:bg-warning text-warning hover:text-white;
+  }
+  .btn-action-sm.info {
+    @apply bg-info/30 hover:bg-info text-info hover:text-white;
+  }
+  .btn-action-sm.primary {
+    @apply bg-primary/30 hover:bg-primary text-primary hover:text-white;
+  }
+  .btn-action-sm.success {
+    @apply bg-success/30 hover:bg-success text-success hover:text-white;
+  }
+  /* buttons END */
+
+  /* modal */
+  .modal-icon.primary {
+    @apply bg-primary/10 text-primary;
+  }
+  .modal-icon.error {
+    @apply bg-error/10 text-error;
+  }
+  .modal-icon.success {
+    @apply bg-success/10 text-success;
+  }
+  .modal-icon.warning {
+    @apply bg-warning/10 text-warning;
+  }
+  .modal-icon.info {
+    @apply bg-info/10 text-info;
+  }
+  /* modal END */
 }
