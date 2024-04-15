@@ -88,8 +88,8 @@ export default function EditPage({ auth, postData }) {
         </button>
       </section>
 
-      <section className="form-section">
-        <form onSubmit={submit} encType="multipart/form-data" className="form-layout">
+      <section className="form-section flex-col-reverse md:flex-row lg:flex-col-reverse xl:flex-row">
+        <form onSubmit={submit} encType="multipart/form-data" className="form-layout md:w-7/12 md:flex-none lg:w-full lg:flex-1 xl:w-7/12 xl:flex-none">
           <TextInput
             label="Title"
             name={'title'}
@@ -135,6 +135,7 @@ export default function EditPage({ auth, postData }) {
             </PrimaryButton>
           </div>
         </form>
+
         <div className="thumbnail-prev-layout">
           <div className="w-full">
             <div className="label flex justify-between items-end mb-2 pt-0">

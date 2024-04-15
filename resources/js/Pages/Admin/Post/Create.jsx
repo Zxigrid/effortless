@@ -65,8 +65,8 @@ export default function Create({ auth }) {
         <BreadCrumbs.Disable value={"Create"} />
       </BreadCrumbs>
 
-      <section className="form-section">
-        <form onSubmit={submit} className="form-layout">
+      <section className="form-section flex-col-reverse md:flex-row lg:flex-col-reverse xl:flex-row">
+        <form onSubmit={submit} className="form-layout md:w-7/12 md:flex-none lg:w-full lg:flex-1 xl:w-7/12 xl:flex-none">
           <TextInput
             label="Title"
             name={'title'}
@@ -113,6 +113,7 @@ export default function Create({ auth }) {
             </PrimaryButton>
           </div>
         </form>
+
         <div className="thumbnail-prev-layout">
           <div className="w-full">
             <div className="label flex justify-between items-end mb-2 pt-0">
