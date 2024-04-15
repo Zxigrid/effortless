@@ -1,8 +1,8 @@
 import React from 'react'
 import { Editor } from '@tinymce/tinymce-react'
+const editorKey = import.meta.env.VITE_TINYMCE_API_KEY;
 
 const BlogEditor = ({label="Label", name, value, onChange, error, initialEditorValue}) => {
-  const editorKey = import.meta.env.TINYMCE_API_KEY;
   return (
     <label className="form-control w-full">
       <div className="label mb-1">
