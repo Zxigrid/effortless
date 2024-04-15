@@ -7,6 +7,7 @@ import FileInput from '@/Components/Ui/Form/FileInput'
 import PrimaryButton from '@/Components/Ui/PrimaryButton'
 import { Trash2, Edit, AlertTriangle } from 'react-feather'
 import Modal from '@/Components/Ui/Modal'
+import BlogEditor from '@/Components/Tools/BlogEditor'
 
 export default function Create({ auth }) {
   const { data, setData, post, processing, errors } = useForm({
@@ -89,12 +90,14 @@ export default function Create({ auth }) {
             inputRef={inputFileRef}
             id={'thumbnail'}
           />
-          <TextInput
-            label="Body"
+          <BlogEditor
+            label='Body'
             name={'body'}
-            onChange={onHandleChange}
             value={data.body}
             error={errors.body}
+            className='w-full'
+            initialEditorValue="Create Content Here!"
+            onChange={value => setData('body', value)}
           />
           <div className="flex justify-end gap-3">
             <button
