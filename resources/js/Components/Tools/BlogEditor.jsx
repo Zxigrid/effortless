@@ -2,13 +2,14 @@ import React from 'react'
 import { Editor } from '@tinymce/tinymce-react'
 
 const BlogEditor = ({label="Label", name, value, onChange, error, initialEditorValue}) => {
+  const editorKey = import.meta.env.TINYMCE_API_KEY;
   return (
     <label className="form-control w-full">
       <div className="label mb-1">
         <span className="label-text text-graphite">{label}</span>
       </div>
       <Editor
-        apiKey='schssylwxu1ys4bbk4coauti5nq6yyyjb03t3b2rjdksivhj'
+        apiKey={editorKey}
         init={{
           plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage advtemplate ai mentions tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss markdown',
           toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
