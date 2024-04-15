@@ -179,8 +179,8 @@ export default function EditPage({ auth, postData }) {
 
       <Modal
         id={"modal_cancel"}
-        title={"Batalkan Postingan"}
-        description={"Yakin ingin membatalkan postingan? inputan kamu yang sudah di edit tidak akan tersimpan"}
+        title={"Batalkan Edit Postingan"}
+        description={"Yakin ingin membatalkan edit postingan ini? inputan kamu yang sudah di edit tidak akan tersimpan"}
         Icon={AlertTriangle}
         classNameIcon={'modal-icon error'}
         approve={
