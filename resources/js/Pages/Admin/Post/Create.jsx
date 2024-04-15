@@ -118,13 +118,16 @@ export default function Create({ auth }) {
             <div className="label flex justify-between items-end mb-2 pt-0">
               <span className="label-text text-graphite">Thumbnail Preview</span>
               <div className="flex gap-2">
-                <label htmlFor="thumbnail" type="button" className="btn-warning-sm" disabled={!data.thumbnail ? true : false}>
+                <label
+                  htmlFor="thumbnail"
+                  className="btn-action-sm warning"
+                >
                   <Edit className="w-4 h-4" />
                 </label>
                 <button
                   type="button"
                   onClick={handleRemoveImage}
-                  className="btn-error-sm"
+                  className="btn-action-sm error"
                   disabled={!data.thumbnail ? true : false}
                 >
                   <Trash2 className="w-4 h-4" />
@@ -142,15 +145,20 @@ export default function Create({ auth }) {
         title={"Batalkan Postingan"}
         description={"Yakin ingin membatalkan postingan? semua inputan kamu tidak akan tersimpan"}
         Icon={AlertTriangle}
+        classNameIcon={'modal-icon error'}
         approve={
-          <button className="btn-modal-cancel">
-            Batal
-          </button>
-        }
-        cancel={
-          <Link as='Button' type='button' href={route('posts.index')} className="btn-modal-approve error">
+          <Link
+            as='Button'
+            type='button'
+            href={route('posts.index')}
+            className="btn-action-sm error">
             Yakin
           </Link>
+        }
+        cancel={
+          <button className="btn-action-sm default">
+            Batal
+          </button>
         }
       />
     </Authenticated>
