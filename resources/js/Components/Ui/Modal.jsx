@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({Icon, title, description, approve, cancel, id}) => {
+const Modal = ({Icon, title, description, approve, cancel, id, classNameIcon}) => {
   return (
     <dialog id={id} className="modal modal-bottom sm:modal-middle">
       <div className="modal-box relative">
@@ -8,7 +8,7 @@ const Modal = ({Icon, title, description, approve, cancel, id}) => {
           ESC
         </small>
         <div className="flex flex-col items-center justify-center gap-2">
-          <span className="modal-icon-error">
+          <span className={classNameIcon}>
             <Icon className="w-5 h-5" />
           </span>
           <h1 className="font-semibold text-center text-xl">{title}</h1>
@@ -16,13 +16,8 @@ const Modal = ({Icon, title, description, approve, cancel, id}) => {
         <p className="text-center text-base mt-2">{description}</p>
         <div className="modal-action mt-5">
           <form method="dialog" className="w-full flex items-center justify-center gap-4">
-            {/* if there is a button in form, it will close the modal */}
-            {/*
-            <button className="btn-modal-approve error">
-              Yakin
-            </button> */}
-            {approve}
             {cancel}
+            {approve}
           </form>
         </div>
       </div>
