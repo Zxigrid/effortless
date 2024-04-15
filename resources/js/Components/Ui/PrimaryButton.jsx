@@ -7,7 +7,7 @@ export default function PrimaryButton({ className = '', disabled, children, ...p
     >
       {
         disabled ? (
-          <span class="loading loading-spinner loading-sm"></span>
+          <span className="loading loading-spinner loading-sm"></span>
         ) : (
           children
         )
