@@ -112,10 +112,10 @@
   .btn-error.btn-outline {
     @apply disabled:border-error/50 disabled:text-error/50;
   }
-  .btn-delete-sm {
+  .btn-error-sm {
     @apply btn btn-sm bg-error/30 hover:bg-error rounded-md border-0 text-error hover:text-white;
   }
-  .btn-edit-sm {
+  .btn-warning-sm {
     @apply btn btn-sm bg-warning/30 hover:bg-warning rounded-md border-0 text-warning hover:text-white;
   }
   .btn-info-sm {
