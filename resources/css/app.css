@@ -80,7 +80,7 @@
     @apply disabled:border-error/50 disabled:text-error/50;
   }
   .btn-action-sm {
-    @apply btn btn-sm rounded-md border-0 disabled:opacity-30;
+    @apply btn btn-sm rounded-md border-0 disabled:opacity-10;
   }
   /* buttons END */
 
