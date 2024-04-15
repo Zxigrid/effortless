@@ -66,7 +66,7 @@ export default function Create({ auth }) {
       </BreadCrumbs>
 
       <section className="form-section flex-col-reverse md:flex-row lg:flex-col-reverse xl:flex-row">
-        <form onSubmit={submit} className="form-layout md:w-7/12 md:flex-none lg:w-full lg:flex-1 xl:w-7/12 xl:flex-none">
+        <form onSubmit={submit} encType='multipart/form-data' className="form-layout md:w-7/12 md:flex-none lg:w-full lg:flex-1 xl:w-7/12 xl:flex-none">
           <TextInput
             label="Title"
             name={'title'}
