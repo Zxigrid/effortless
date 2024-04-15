@@ -61,6 +61,7 @@ export default function Index({ auth, posts }) {
           {
             posts.links && posts.links.map((link, _) => (
               <Link
+              key={_}
               as='Button'
               href={link.url}
               className="join-item btn btn-neutral"
