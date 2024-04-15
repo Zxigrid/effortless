@@ -10,15 +10,35 @@ use App\Models\Post;
 class PostService
 {
 
-  public function dataIndex() {
+  public function dataIndex()
+  {
     return [
-      'posts'=>Post::paginate(10),
+      'posts' => Post::paginate(10),
     ];
   }
 
-  public function store($data) {
+  public function store($data)
+  {
     $fileName = \App\Helpers\ImageHelper::save($data['thumbnail']);
     $data['thumbnail'] = $fileName;
     Post::create($data);
+  }
+
+  public function dataEdit(Post $post)
+  {
+    return [
+      'postData' => $post
+    ];
+  }
+
+  public function update(Post $post, $data)
+  {
+    if (isset($data['thumbnail'])) {
+      $fileName = \App\Helpers\ImageHelper::save($data['thumbnail']);
+      $data['thumbnail'] = $fileName;
+    } else {
+      $data['thumbnail'] = $post->thumbnail;
+    }
+    $post->update($data);
   }
 }

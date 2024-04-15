@@ -4,7 +4,7 @@ import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
-import { Plus } from 'react-feather'
+import { Edit, Plus } from 'react-feather'
 
 export default function Index({ auth, posts }) {
   return (
@@ -48,7 +48,9 @@ export default function Index({ auth, posts }) {
                   </span>
                 </td>
                 <td>
-
+                  <Link as='Button' href={route('posts.edit', post.id)} className="btn-action-sm warning">
+                    <Edit className='w-4 h-4'/>
+                  </Link>
                 </td>
               </tr>
             ))}

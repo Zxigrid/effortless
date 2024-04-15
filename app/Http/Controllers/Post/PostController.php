@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\PostStoreRequest;
+use App\Http\Requests\Admin\Post\PostUpdateRequest;
 use App\Models\Post;
 use App\Services\Admin\Post\PostService;
 use Illuminate\Http\Request;
@@ -51,17 +52,18 @@ class PostController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Post $post)
   {
-    //
+    return Inertia::render("Admin/Post/Edit", $this->service->dataEdit($post) ?? []);
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(PostUpdateRequest $request, Post $post)
   {
-    //
+    $this->service->update($post, $request->data());
+    return to_route('posts.index')->with('success', 'Blog berhasil di edit!');
   }
 
   /**
