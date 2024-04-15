@@ -14,7 +14,7 @@ class ImageHelper
     $imageName = Str::random(40);
 
     // save the image
-    Image::make($image)->encode('image/webp', 75)->save(storage_path('app/public/'.$imageName));
+    Image::make($image)->encode('image/webp', 80)->save(storage_path('app/public/'.$imageName));
     return $imageName;
   }
 }
