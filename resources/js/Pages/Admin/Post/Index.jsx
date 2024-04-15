@@ -4,9 +4,10 @@ import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
-import { Edit, Plus } from 'react-feather'
+import { Edit, Plus, Trash2 } from 'react-feather'
 
 export default function Index({ auth, posts }) {
+  const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
   return (
     <Authenticated user={auth.user} header="Postingan Blog">
       <Head title="Posts" />
@@ -29,28 +30,35 @@ export default function Index({ auth, posts }) {
         <Table>
           <Table.Head>
             <th className="px-3">Thumbnail</th>
-            <th>Title</th>
-            <th>Slug</th>
+            <th>Judul</th>
             <th>Status</th>
+            <th>Tanggal dibuat</th>
             <th></th>
           </Table.Head>
           <Table.Body>
             {posts.data.map((post, index) => (
-              <tr key={index}>
+              <tr key={index} className='border-b border-base-100'>
                 <td>
-                  <img src={"storage/" + post.thumbnail} alt={post.title} className="w-10 h-10 rounded-full object-cover" />
+                  <img src={"storage/" + post.thumbnail} alt={post.title} className="w-10 h-10 rounded-full object-cover border" />
                 </td>
                 <td>{post.title}</td>
-                <td>{post.slug}</td>
                 <td>
                   <span className={`dash-badge ${post.status == 'published' ? ' bg-success/20 text-success' : ' bg-error/20 text-error'}`}>
                     {post.status}
                   </span>
                 </td>
                 <td>
-                  <Link as='Button' href={route('posts.edit', post.id)} className="btn-action-sm warning">
-                    <Edit className='w-4 h-4'/>
-                  </Link>
+                  {new Date(post.created_at).toLocaleDateString('id-ID', dateOptions)}
+                </td>
+                <td>
+                  <div className="flex items-center gap-2 px-3">
+                    <Link as='Button' href={route('posts.edit', post.id)} className="btn-action-sm warning">
+                      <Edit className='w-4 h-4'/>
+                    </Link>
+                    <button type="button" className='btn-action-sm error'>
+                      <Trash2 className='w-4 h-4'/>
+                    </button>
+                  </div>
                 </td>
               </tr>
             ))}
