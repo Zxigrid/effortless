@@ -118,13 +118,13 @@ export default function Create({ auth }) {
             <div className="label flex justify-between items-end mb-2 pt-0">
               <span className="label-text text-graphite">Thumbnail Preview</span>
               <div className="flex gap-2">
-                <label htmlFor="thumbnail" type="button" className="btn-edit-sm" disabled={!data.thumbnail ? true : false}>
+                <label htmlFor="thumbnail" type="button" className="btn-warning-sm" disabled={!data.thumbnail ? true : false}>
                   <Edit className="w-4 h-4" />
                 </label>
                 <button
                   type="button"
                   onClick={handleRemoveImage}
-                  className="btn-delete-sm"
+                  className="btn-error-sm"
                   disabled={!data.thumbnail ? true : false}
                 >
                   <Trash2 className="w-4 h-4" />

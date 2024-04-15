@@ -5,6 +5,7 @@ import ThemeToggle from '@/Components/Ui/toggles/ThemeToggle';
 import ProfileDropdown from '@/Components/Ui/ProfileDropdown';
 import { Bookmark, Grid, LogOut, User } from 'react-feather';
 import SidebarLink from '@/Components/Ui/SidebarLink';
+import Alert from '@/Components/Ui/Alert';
 
 export default function Authenticated({ user, header, children }) {
   return (
@@ -36,6 +37,7 @@ export default function Authenticated({ user, header, children }) {
 
         {/* main content */}
         <main className="p-4 w-full space-y-3">
+          <Alert/>
           {children}
         </main>
         {/* main content end */}
