@@ -66,11 +66,21 @@ class PostController extends Controller
     return to_route('posts.index')->with('success', 'Blog berhasil di edit!');
   }
 
+  public function updateStatus(Request $request, Post $post)
+  {
+    $this->service->updateStatus($post, $request->status);
+    return back()->with('success', 'Status blog berhasil di ubah jadi '.$request->status);
+  }
   /**
    * Remove the specified resource from storage.
    */
-  public function destroy(string $id)
+  public function destroy(Post $post)
   {
-    //
+    if($post['status'] === 'published'){
+      return back()->with('failed','Blog sedang di publikasi, tidak dapat di hapus!');
+    } else {
+      $this->service->destroy($post);
+      return back()->with('success', 'Blog berhasil di hapus!');
+    }
   }
 }

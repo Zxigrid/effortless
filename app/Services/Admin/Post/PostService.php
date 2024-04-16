@@ -41,4 +41,17 @@ class PostService
     }
     $post->update($data);
   }
+
+  public function updateStatus($post, $status)
+  {
+    $post->update(['status' => $status]);
+  }
+
+  public function destroy(Post $post)
+  {
+    if(file_exists(substr($post->file, 1))){
+      unlink(substr($post->file,1));
+    }
+    $post->delete();
+  }
 }
