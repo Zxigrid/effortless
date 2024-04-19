@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Post;
+namespace App\Http\Controllers\Admin\Post;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Post\PostStoreRequest;
@@ -8,7 +8,6 @@ use App\Http\Requests\Admin\Post\PostUpdateRequest;
 use App\Models\Post;
 use App\Services\Admin\Post\PostService;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class PostController extends Controller
 {
@@ -20,7 +19,7 @@ class PostController extends Controller
    */
   public function index(Request $request)
   {
-    return Inertia::render("Admin/Post/Index", $this->service->dataIndex($request->search) ?? []);
+    return inertia("Admin/Post/Index", $this->service->dataIndex($request->search) ?? []);
   }
 
   /**
@@ -28,7 +27,7 @@ class PostController extends Controller
    */
   public function create()
   {
-    return Inertia::render("Admin/Post/Create");
+    return inertia("Admin/Post/Create");
   }
 
   /**
@@ -54,7 +53,7 @@ class PostController extends Controller
    */
   public function edit(Post $post)
   {
-    return Inertia::render("Admin/Post/Edit", $this->service->dataEdit($post) ?? []);
+    return inertia("Admin/Post/Edit", $this->service->dataEdit($post) ?? []);
   }
 
   /**
