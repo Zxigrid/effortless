@@ -21,4 +21,11 @@ class CategoryService
   {
     Category::create($data);
   }
+
+  public function dataEdit($category)
+  {
+    return [
+      'category' => $category
+    ];
+  }
 }

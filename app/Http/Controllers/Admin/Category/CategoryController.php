@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\CategoryStoreRequest;
+use App\Models\Category;
 use App\Services\Admin\Category\CategoryService;
 use Illuminate\Http\Request;
 
@@ -48,9 +49,9 @@ class CategoryController extends Controller
   /**
    * Show the form for editing the specified resource.
    */
-  public function edit(string $id)
+  public function edit(Category $category)
   {
-    //
+    return inertia('Admin/Category/Edit', $this->service->dataEdit($category) ?? []);
   }
 
   /**
