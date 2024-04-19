@@ -9,6 +9,14 @@ use App\Models\Category;
  */
 class CategoryService
 {
+  public function dataIndex($search)
+  {
+    $categories = Category::query()->search($search)->paginate(10);
+    return [
+      'categories' => $categories
+    ];
+  }
+
   public function store($data)
   {
     Category::create($data);

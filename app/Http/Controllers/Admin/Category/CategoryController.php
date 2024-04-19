@@ -15,9 +15,9 @@ class CategoryController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    return inertia('Admin/Category/Index');
+    return inertia('Admin/Category/Index', $this->service->dataIndex($request->search));
   }
 
   /**

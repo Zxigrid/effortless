@@ -5,8 +5,10 @@ import { Plus } from 'react-feather'
 import BreadCrumbs from '@/Components/Ui/BreadCrumbs'
 import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
+import localeDate from '@/Lib/LocaleDate'
+import Actions from '@/Components/Tools/Actions'
 
-export default function Index({ auth }) {
+export default function Index({ auth, categories }) {
   return (
     <Authenticated header={'Kategori Postingan'} user={auth.user}>
       <Head title="Categories" />
@@ -32,6 +34,21 @@ export default function Index({ auth }) {
             <th>Tanggal dibuat</th>
             <th></th>
           </Table.Head>
+          <Table.Body>
+            {
+              categories.data.map((category, index) => (
+                <tr key={index}>
+                  <td className="px-3">{category.name}</td>
+                  <td>{localeDate(category.created_at)}</td>
+                  <td>
+                    <Actions>
+                      <Actions.Edit link={route('categories.edit', category.id)} />
+                    </Actions>
+                  </td>
+                </tr>
+              ))
+            }
+          </Table.Body>
         </Table>
       </section>
     </Authenticated>
