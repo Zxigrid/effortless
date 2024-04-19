@@ -40,7 +40,7 @@ export default function Create({ auth, category }) {
       <BreadCrumbs>
         <BreadCrumbs.Link href={route('dashboard')} value={"Dashboard"} />
         <BreadCrumbs.Link href={route('categories.index')} value={"Categories"} />
-        <BreadCrumbs.Disable value={"Create"} />
+        <BreadCrumbs.Disable value={"Edit"} />
       </BreadCrumbs>
 
       <section className="form-section justify-start">

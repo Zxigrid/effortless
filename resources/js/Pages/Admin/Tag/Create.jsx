@@ -31,7 +31,7 @@ export default function Create({ auth }) {
 
       <BreadCrumbs>
         <BreadCrumbs.Link href={route('dashboard')} value={"Dashboard"} />
-        <BreadCrumbs.Link href={route('tags.index')} value={"tags"} />
+        <BreadCrumbs.Link href={route('tags.index')} value={"Tags"} />
         <BreadCrumbs.Disable value={"Create"} />
       </BreadCrumbs>
 
