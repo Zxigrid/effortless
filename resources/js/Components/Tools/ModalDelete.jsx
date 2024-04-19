@@ -13,7 +13,7 @@ const ModalDelete = ({link, data}) => {
       Icon={AlertTriangle}
       classNameIcon={'modal-icon error'}
       title="Hapus Postingan"
-      description={`Apakah anda yakin ingin menghapus "${data}"?`}
+      description={`Yakin ingin menghapus "${data}"?`}
       cancel={
         <button className='btn-action-sm default'>
           Batalkan

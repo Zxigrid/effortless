@@ -4,31 +4,38 @@ import SearchBar from '@/Components/Ui/SearchBar'
 import Table from '@/Components/Ui/Table'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link, router } from '@inertiajs/react'
-import { DownloadCloud, Edit, Info, Plus, Trash2, UploadCloud } from 'react-feather'
+import { Info, Plus } from 'react-feather'
 import Modal from '@/Components/Ui/Modal'
 import handleClickModal from '@/Lib/HandleClickModal'
 import ModalDelete from '@/Components/Tools/ModalDelete'
+import Actions from '@/Components/Tools/Actions'
 
 export default function Index({ auth, posts }) {
-  const [deleteLink, setDeleteLink] = useState('#');
-  const [status, setStatus] = useState('');
-  const [deleteTitle, setDeleteTitle] = useState('');
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }
-  const handleDeleteLink = (link, postTitle) => {
-    setDeleteLink(link);
+  const [statusData, setStatusData] = useState({});
+  const [deleteData, setDeleteData] = useState({});
+  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+  const handleDelete = (data) => {
+    setDeleteData({
+      title: data.title,
+      link: route('posts.destroy', data.id),
+    });
     handleClickModal('modal_delete');
-    setDeleteTitle(postTitle);
   }
 
-  const handleSetStatus = (status) => {
-    setStatus(status)
+  const handleSetStatus = (data) => {
+    setStatusData({
+      id: data.id,
+      title: data.title,
+      status: data.status,
+    })
     handleClickModal('modal_status');
   }
 
   const handleUpdateStatus = () => {
-    router.post(route('posts.update-status', status.id), {
+    router.post(route('posts.update-status', statusData.id), {
       _method: 'put',
-      status: status.status === 'published' ? 'draft' : 'published'
+      status: statusData.status === 'published' ? 'draft' : 'published'
     })
   }
 
@@ -75,35 +82,11 @@ export default function Index({ auth, posts }) {
                   {new Date(post.created_at).toLocaleDateString('id-ID', dateOptions)}
                 </td>
                 <td>
-                  <div className="flex items-center gap-2 px-3">
-                    <Link
-                      as='Button'
-                      href={route('posts.edit', post.id)}
-                      className="btn-action-sm warning"
-                    >
-                      <Edit className='w-4 h-4' />
-                    </Link>
-                    <button
-                      onClick={() => handleDeleteLink(route('posts.destroy', post.id), post.title)}
-                      type="button"
-                      className='btn-action-sm error'>
-                      <Trash2 className='w-4 h-4' />
-                    </button>
-                    <button
-                      className={`btn-action-sm
-                          ${post.status == 'published' ? 'warning' : 'success'}`
-                      }
-                      onClick={() => handleSetStatus(post)}
-                    >
-                      {
-                        post.status == 'published' ? (
-                          <DownloadCloud className='w-4 h-4' />
-                        ) : (
-                          <UploadCloud className='w-4 h-4' />
-                        )
-                      }
-                    </button>
-                  </div>
+                  <Actions>
+                    <Actions.Edit link={route('posts.edit', post.id)}/>
+                    <Actions.Delete onClick={() => handleDelete(post)}/>
+                    <Actions.Status data={post} onClick={() => handleSetStatus(post)} />
+                  </Actions>
                 </td>
               </tr>
             ))}
@@ -127,13 +110,14 @@ export default function Index({ auth, posts }) {
         </div>
       </section>
 
-      <ModalDelete data={deleteTitle} link={deleteLink} />
+      <ModalDelete data={deleteData.title} link={deleteData.link} />
+
       <Modal
         Icon={Info}
         classNameIcon={'modal-icon info'}
         id='modal_status'
         title={'Ganti Status'}
-        description={`Apakah anda yakin ingin mengubah status postingan ini jadi ${status === 'draft' ? 'published' : 'draft'}?`}
+        description={`Yakin ingin mengganti status ${statusData.title} jadi "${statusData.status === 'published' ? 'draft' : 'published'}?"`}
         cancel={
           <button className='btn-action-sm default'>
             Batal
@@ -141,10 +125,7 @@ export default function Index({ auth, posts }) {
         }
 
         approve={
-          <button
-            onClick={() => handleUpdateStatus()}
-            className='btn-action-sm info'
-          >
+          <button onClick={() => handleUpdateStatus()} className='btn-action-sm info'>
             Ganti
           </button>
         }
