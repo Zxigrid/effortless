@@ -10,10 +10,11 @@ use App\Models\Post;
 class PostService
 {
 
-  public function dataIndex()
+  public function dataIndex($search)
   {
+    $posts = Post::query()->search($search)->paginate(10);
     return [
-      'posts' => Post::paginate(10),
+      'posts' => $posts
     ];
   }
 

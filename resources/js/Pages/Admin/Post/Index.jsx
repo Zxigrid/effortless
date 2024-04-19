@@ -31,6 +31,7 @@ export default function Index({ auth, posts }) {
       status: status.status === 'published' ? 'draft' : 'published'
     })
   }
+
   return (
     <Authenticated user={auth.user} header="Postingan Blog">
       <Head title="Posts" />
@@ -41,7 +42,7 @@ export default function Index({ auth, posts }) {
       </BreadCrumbs>
 
       <section className="tool-section">
-        <SearchBar />
+        <SearchBar link={route('posts.index')} />
 
         <Link as="Button" href={route('posts.create')} className="btn btn-primary text-sm gap-1">
           <Plus />

@@ -18,9 +18,9 @@ class PostController extends Controller
   /**
    * Display a listing of the resource.
    */
-  public function index()
+  public function index(Request $request)
   {
-    return Inertia::render("Admin/Post/Index", $this->service->dataIndex() ?? []);
+    return Inertia::render("Admin/Post/Index", $this->service->dataIndex($request->search) ?? []);
   }
 
   /**
