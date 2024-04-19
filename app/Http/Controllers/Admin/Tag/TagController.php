@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Tag;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Tag\TagStoreRequest;
+use App\Http\Requests\Admin\Tag\TagUpdateRequest;
 use App\Models\Tag;
 use App\Services\Admin\Tag\TagService;
 use Illuminate\Http\Request;
@@ -49,15 +50,16 @@ class TagController extends Controller
    */
   public function edit(Tag $tag)
   {
-    //
+    return inertia('Admin/Tag/Edit', $this->service->dataEdit($tag));
   }
 
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, Tag $tag)
+  public function update(TagUpdateRequest $request, Tag $tag)
   {
-    //
+    $this->service->update($tag, $request->data());
+    return to_route('tags.index')->with('success', 'Tag berhasil di edit menjadi "'.$request->data()['name'].'" !');
   }
 
   /**

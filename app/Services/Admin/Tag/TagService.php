@@ -21,4 +21,16 @@ class TagService
   {
     return Tag::create($data);
   }
+
+  public function dataEdit($tag)
+  {
+    return [
+      'tag' => $tag
+    ];
+  }
+
+  public function update($tag, $data)
+  {
+    $tag->update($data);
+  }
 }
