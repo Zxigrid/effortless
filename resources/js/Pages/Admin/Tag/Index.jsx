@@ -10,10 +10,19 @@ import Actions from '@/Components/Tools/Actions'
 import ModalDelete from '@/Components/Tools/ModalDelete'
 import handleClickModal from '@/Lib/HandleClickModal'
 
-export default function Index({ auth }) {
+export default function Index({ auth, tags }) {
+  const [deleteData, setDeleteData] = useState({});
+
+  const handleDelete = (data) => {
+    setDeleteData({
+      name: data.name,
+      link: route('tags.destroy', data.id),
+    });
+    handleClickModal('modal_delete');
+  }
   return (
     <Authenticated header={'Tag Postingan'} user={auth.user}>
-      <Head title="Tags"/>
+      <Head title="Tags" />
 
       <BreadCrumbs>
         <BreadCrumbs.Link href={route('dashboard')} value={"Dashboard"} />
@@ -36,9 +45,42 @@ export default function Index({ auth }) {
             <th>Tanggal dibuat</th>
             <th></th>
           </Table.Head>
+          <Table.Body>
+            {
+              tags.data.map((tag, index) => (
+                <tr key={index}>
+                  <td className="px-3">{tag.name}</td>
+                  <td>{localeDate(tag.created_at)}</td>
+                  <td>
+                    <Actions>
+                      <Actions.Edit link={route('tags.edit', tag.id)} />
+                      <Actions.Delete onClick={() => handleDelete(tag)} />
+                    </Actions>
+                  </td>
+                </tr>
+              ))
+            }
+          </Table.Body>
         </Table>
       </section>
 
+      <section className="w-full flex justify-end items-center">
+        <div className="join shadow bg-neutral">
+          {
+            tags.links && tags.links.map((link, _) => (
+              <Link
+                key={_}
+                as='Button'
+                href={link.url}
+                className="join-item btn btn-neutral"
+                disabled={link.active}
+                dangerouslySetInnerHTML={{ __html: link.label }} />
+            ))
+          }
+        </div>
+      </section>
+
+      <ModalDelete data={deleteData.name} link={deleteData.link} />
     </Authenticated>
   )
 }

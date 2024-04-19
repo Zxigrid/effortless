@@ -9,6 +9,14 @@ use App\Models\Tag;
  */
 class TagService
 {
+  public function dataIndex($search)
+  {
+    $tags = Tag::query()->search($search)->paginate(10);
+    return [
+      'tags' => $tags
+    ];
+  }
+
   public function store($data)
   {
     return Tag::create($data);
