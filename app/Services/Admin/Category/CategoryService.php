@@ -33,4 +33,9 @@ class CategoryService
   {
     $category->update($data);
   }
+
+  public function destroy($category)
+  {
+    $category->delete();
+  }
 }
