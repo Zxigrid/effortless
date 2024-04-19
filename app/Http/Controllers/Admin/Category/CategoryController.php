@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin\Category;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Category\CategoryStoreRequest;
+use App\Http\Requests\Admin\Category\CategoryUpdateRequest;
 use App\Models\Category;
 use App\Services\Admin\Category\CategoryService;
 use Illuminate\Http\Request;
@@ -57,9 +58,10 @@ class CategoryController extends Controller
   /**
    * Update the specified resource in storage.
    */
-  public function update(Request $request, string $id)
+  public function update(CategoryUpdateRequest $request, Category $category)
   {
-    //
+    $this->service->update($category, $request->data());
+    return to_route('categories.index')->with('success', 'Kategori baru berhasil di ubah!');
   }
 
   /**

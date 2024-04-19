@@ -1,12 +1,14 @@
-import React, { useState, useRef } from 'react'
+import React, { useState } from 'react'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
-import { Head, Link, useForm } from '@inertiajs/react'
+import { Head, Link, useForm, router, usePage } from '@inertiajs/react'
 import BreadCrumbs from '@/Components/Ui/BreadCrumbs'
 import TextInput from '@/Components/Ui/Form/TextInput'
 import PrimaryButton from '@/Components/Ui/PrimaryButton'
 
 export default function Create({ auth, category }) {
-  const { data, setData, post, processing, errors } = useForm({
+  const { errors } = usePage().props;
+  const [processing, setProcessing] = useState(false);
+  const { data, setData } = useForm({
     name: category.name,
     slug: category.slug
   })
@@ -23,7 +25,13 @@ export default function Create({ auth, category }) {
 
   const submit = (e) => {
     e.preventDefault();
-    post(route('categories.store'));
+    router.post(route('categories.update', category.id), {
+      _method: 'put',
+      ...data
+    }, {
+      onStart: page => setProcessing(true),
+      onFinish: page => setProcessing(false),
+    })
   }
   return (
     <Authenticated user={auth.user} header="Tambah Kategori">

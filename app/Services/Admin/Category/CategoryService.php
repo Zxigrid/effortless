@@ -28,4 +28,9 @@ class CategoryService
       'category' => $category
     ];
   }
+
+  public function update($category, $data)
+  {
+    $category->update($data);
+  }
 }
