@@ -22,8 +22,8 @@ class CategoryUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'min:3', 'string', 'unique:categories,name,'.$this->category->id],
-            'slug' => ['required', 'min:3', 'string', 'unique:categories,slug,'.$this->category->id],
+            'name' => ['required', 'min:3', 'max:255', 'string', 'unique:categories,name,'.$this->category->id],
+            'slug' => ['required', 'min:3', 'max:255', 'string', 'unique:categories,slug,'.$this->category->id],
         ];
     }
 
