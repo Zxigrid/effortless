@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Post\PostController;
+use App\Http\Controllers\Admin\Category\CategoryController;
+use App\Http\Controllers\Admin\Post\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -26,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('posts', PostController::class);
     Route::put('/posts/{post}/update-status', [PostController::class, 'updateStatus'])->name('posts.update-status');
+
+    Route::resource('categories', CategoryController::class);
 });
 
 require __DIR__.'/auth.php';
