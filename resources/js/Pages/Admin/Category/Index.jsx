@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Authenticated from '@/Layouts/Admin/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 import { Plus } from 'react-feather'
@@ -54,7 +54,7 @@ export default function Index({ auth, categories }) {
                   <td>
                     <Actions>
                       <Actions.Edit link={route('categories.edit', category.id)} />
-                      <Actions.Delete onClick={() => handleDelete(category)}/>
+                      <Actions.Delete onClick={() => handleDelete(category)} />
                     </Actions>
                   </td>
                 </tr>
@@ -62,6 +62,22 @@ export default function Index({ auth, categories }) {
             }
           </Table.Body>
         </Table>
+      </section>
+
+      <section className="w-full flex justify-end items-center">
+        <div className="join shadow bg-neutral">
+          {
+            categories.links && categories.links.map((link, _) => (
+              <Link
+                key={_}
+                as='Button'
+                href={link.url}
+                className="join-item btn btn-neutral"
+                disabled={link.active}
+                dangerouslySetInnerHTML={{ __html: link.label }} />
+            ))
+          }
+        </div>
       </section>
       <ModalDelete data={deleteData.name} link={deleteData.link} />
     </Authenticated>
