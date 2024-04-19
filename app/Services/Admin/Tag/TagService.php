@@ -33,4 +33,9 @@ class TagService
   {
     $tag->update($data);
   }
+
+  public function destroy($tag)
+  {
+    $tag->delete();
+  }
 }

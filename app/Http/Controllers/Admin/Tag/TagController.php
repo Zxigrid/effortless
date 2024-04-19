@@ -67,6 +67,7 @@ class TagController extends Controller
    */
   public function destroy(Tag $tag)
   {
-    //
+    $this->service->destroy($tag);
+    return back()->with('success', 'Tag "'.$tag->name.'" berhasil di hapus !');
   }
 }
