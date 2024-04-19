@@ -3,7 +3,7 @@ import ApplicationLogo from '@/Components/ApplicationLogo';
 import SidebarToggle from '@/Components/Ui/toggles/SidebarToggle';
 import ThemeToggle from '@/Components/Ui/toggles/ThemeToggle';
 import ProfileDropdown from '@/Components/Ui/ProfileDropdown';
-import { Bookmark, Grid, Layers, LogOut, User } from 'react-feather';
+import { Bookmark, Grid, Layers, LogOut, Tag, User } from 'react-feather';
 import SidebarLink from '@/Components/Ui/SidebarLink';
 import Alert from '@/Components/Ui/Alert';
 
@@ -67,6 +67,10 @@ export default function Authenticated({ user, header, children }) {
           <SidebarLink href={route('categories.index')} active={route().current('categories.index')}>
             <Layers />
             <span>Category</span>
+          </SidebarLink>
+          <SidebarLink href={route('tags.index')} active={route().current('tags.index')}>
+            <Tag />
+            <span>Tag</span>
           </SidebarLink>
           {/* links end */}
         </div>
