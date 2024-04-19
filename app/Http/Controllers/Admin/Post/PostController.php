@@ -37,7 +37,7 @@ class PostController extends Controller
   {
     $this->service->store($request->data());
 
-    return to_route('posts.index')->with('success', 'Blog baru berhasil di posting!');
+    return to_route('posts.index')->with('success', 'Blog baru berhasil di tambahkan!');
   }
 
   /**

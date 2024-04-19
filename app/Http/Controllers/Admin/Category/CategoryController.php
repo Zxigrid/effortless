@@ -36,7 +36,7 @@ class CategoryController extends Controller
   public function store(CategoryStoreRequest $request)
   {
     $this->service->store($request->data());
-    return to_route('categories.index')->with('success', 'Kategori "'.$request->data()['name'].'" berhasil di buat!');
+    return to_route('categories.index')->with('success', 'Kategori "'.$request->data()['name'].'" berhasil di tambahkan!');
   }
 
   /**
@@ -61,7 +61,7 @@ class CategoryController extends Controller
   public function update(CategoryUpdateRequest $request, Category $category)
   {
     $this->service->update($category, $request->data());
-    return to_route('categories.index')->with('success', 'Kategori berhasil di ubah jadi "'.$request->data()['name'].'" !');
+    return to_route('categories.index')->with('success', 'Kategori berhasil di edit jadi "'.$request->data()['name'].'" !');
   }
 
   /**
