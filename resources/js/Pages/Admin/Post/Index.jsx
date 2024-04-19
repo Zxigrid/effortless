@@ -9,11 +9,11 @@ import Modal from '@/Components/Ui/Modal'
 import handleClickModal from '@/Lib/HandleClickModal'
 import ModalDelete from '@/Components/Tools/ModalDelete'
 import Actions from '@/Components/Tools/Actions'
+import localeDate from '@/Lib/LocaleDate'
 
 export default function Index({ auth, posts }) {
   const [statusData, setStatusData] = useState({});
   const [deleteData, setDeleteData] = useState({});
-  const dateOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
   const handleDelete = (data) => {
     setDeleteData({
@@ -79,7 +79,7 @@ export default function Index({ auth, posts }) {
                   </span>
                 </td>
                 <td>
-                  {new Date(post.created_at).toLocaleDateString('id-ID', dateOptions)}
+                  {localeDate(post.created_at)}
                 </td>
                 <td>
                   <Actions>
